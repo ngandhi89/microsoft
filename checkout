@@ -27,7 +27,7 @@ window.uetq.push('event', 'purchase',
 <!-- Event snippet for Bing Dynamic Remarketing -->
 <script>
 window.uetq.push('event', '', {
-'ecomm_prodid': [{% for item in checkout.line_items limit:3 %}'shopify_US_{{ item.product_id }}_{{ item.variant_id }}'{% unless forloop.last %}, {% endunless %}{% endfor %}],
+'ecomm_prodid': [{% for item in checkout.line_items limit:3 %}'{{ item.product_id }}_{{ item.variant_id }}'{% unless forloop.last %}, {% endunless %}{% endfor %}],
  'ecomm_pagetype': 'purchase'});
 </script>
 
