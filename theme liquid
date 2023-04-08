@@ -20,15 +20,15 @@
 window.uetq = window.uetq || [];
 window.uetq.push('event', '', 
 {'ecomm_prodid': {% if template contains 'product' -%}
- 'shopify_US_{{ product.id }}_{{ product.selected_or_first_available_variant.id }}'
+ '{{ product.id }}_{{ product.selected_or_first_available_variant.id }}'
     {%- elsif template contains 'collection' -%}
-   [{% for item in collection.products limit:3 %}'shopify_US_{{ item.id }}_{{ item.selected_or_first_available_variant.id }}'{% unless forloop.last %}, {% endunless %}{% endfor %}]
+   [{% for item in collection.products limit:3 %}'{{ item.id }}_{{ item.selected_or_first_available_variant.id }}'{% unless forloop.last %}, {% endunless %}{% endfor %}]
  {%- elsif template contains 'index' -%}
-    [{% for item in collection.products limit:3 %}'shopify_US_{{ item.id }}_{{ item.selected_or_first_available_variant.id }}'{% unless forloop.last %}, {% endunless %}{% endfor %}]  
+    [{% for item in collection.products limit:3 %}'{{ item.id }}_{{ item.selected_or_first_available_variant.id }}'{% unless forloop.last %}, {% endunless %}{% endfor %}]  
  {%- elsif template contains 'search' -%}
-    [{% for item in search.results limit:3 %}'shopify_US_{{ item.id }}_{{ item.selected_or_first_available_variant.id }}'{% unless forloop.last %}, {% endunless %}{% endfor %}]
+    [{% for item in search.results limit:3 %}'{{ item.id }}_{{ item.selected_or_first_available_variant.id }}'{% unless forloop.last %}, {% endunless %}{% endfor %}]
     {%- elsif template contains 'cart' -%}
-    [{%- for item in cart.items limit:3 -%}'shopify_US_{{ item.product_id }}_{{ item.variant_id }}'
+    [{%- for item in cart.items limit:3 -%}'{{ item.product_id }}_{{ item.variant_id }}'
       {%- unless forloop.last -%}, {%- endunless -%}
     {%- endfor -%}]{%- endif -%},
  'ecomm_pagetype': '{% if template contains 'index' %}home{% elsif template contains 'collection' %}category{% elsif template contains 'search' %}searchresults{% elsif template contains 'product' %}product{% elsif template contains 'cart' %}cart{% elsif template contains 'purchase' %}purchase{%endif %}', });
